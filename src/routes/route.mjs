@@ -1,9 +1,11 @@
 import { Router } from "express";
 import { weatherData } from "../../utils/weatherData.mjs";
+import axios from "axios";
+import "dotenv/config";
 
 const router = Router();
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
 	res.render("index", { title: "Weather Web App" });
 });
 
@@ -15,6 +17,19 @@ router.get("/weather", (req, res) => {
 	});
 });
 
+router.get("/location", async (req, res) => {
+	try {
+		const response = await axios.get(
+			`https://ipinfo.io/json?token=${process.env.IP_API_KEY}`
+		);
+		const data = response.data;
+		if (data?.city) {
+			res.send(data);
+		}
+	} catch (error) {
+		console.error("Error fetching location data:", error);
+	}
+});
 router.get("*", (req, res) => {
 	res.render("404", { title: "Page not found" });
 });

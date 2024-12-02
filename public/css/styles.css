@@ -84,6 +84,12 @@ h2 {
 	width: 80px;
 	height: 40px;
 	border-radius: 50px;
+	margin-right: 10px;
+}
+.location-button {
+	width: 110px;
+	height: 40px;
+	border-radius: 50px;
 }
 .icon-and-weatherInfo {
 	display: flex;

@@ -14,7 +14,6 @@ export const weatherData = (address, units, callback) => {
 		encodeURIComponent(units) +
 		"&APPID=" +
 		openWeatherMap.SECRET_KEY;
-	console.log(url);
 
 	request({ url, json: true }, (err, data) => {
 		if (err) callback(true, "Unable to fetch data, Please try again" + err);
