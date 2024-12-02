@@ -62,12 +62,20 @@ weatherForm.addEventListener("submit", (e) => {
 
 function showData(city) {
 	getWeatherData(city, (result) => {
+		console.log(result);
 		if (result.cod === 200) {
-			if (
-				result.weather[0].description === "rain" ||
-				result.weather[0].description === "fog"
-			)
-				weatherIcon.className = `wi wi-day-${result.weather[0].description}`;
+			const weatherId = result.weather[0].id;
+			if (weatherId >= 200 && weatherId < 300)
+				weatherIcon.className = "wi wi-day-thunderstorm";
+			else if (weatherId >= 300 && weatherId < 400)
+				weatherIcon.className = "wi wi-day-showers";
+			else if (weatherId >= 500 && weatherId < 600)
+				weatherIcon.className = "wi wi-day-rain";
+			else if (weatherId >= 600 && weatherId < 700)
+				weatherIcon.className = "wi wi-day-snow";
+			else if (weatherId >= 700 && weatherId < 800)
+				weatherIcon.className = "wi wi-day-fog";
+			else if (weatherId === 800) weatherIcon.className = "wi wi-day-sunny";
 			else weatherIcon.className = "wi wi-day-cloudy";
 			locationElement.textContent = result?.name;
 			tempElement.textContent =
