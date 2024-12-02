@@ -17,19 +17,20 @@ body {
 }
 
 header {
-	margin-top: 16px;
+	margin-top: 0px;
 	margin-bottom: 48px;
 	text-align: center;
 }
 
 h2 {
+	margin-top: 10px;
 	font-size: 64px;
 	margin-bottom: 16px;
 }
 
 .widget {
 	position: absolute;
-	top: 65%;
+	top: 55%;
 	left: 50%;
 	height: 550px;
 	width: 500px;

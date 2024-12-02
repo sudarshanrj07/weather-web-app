@@ -4,7 +4,6 @@ import { fileURLToPath } from "url";
 import hbs from "hbs";
 import routes from "./routes/route.mjs";
 import "dotenv/config";
-import axios from "axios";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
