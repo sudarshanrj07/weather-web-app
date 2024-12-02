@@ -6,10 +6,12 @@ const openWeatherMap = {
 	SECRET_KEY: process.env.API_KEY,
 };
 
-export const weatherData = (address, callback) => {
+export const weatherData = (address, units, callback) => {
 	const url =
 		openWeatherMap.BASE_URL +
 		encodeURIComponent(address) +
+		"&units=" +
+		encodeURIComponent(units) +
 		"&APPID=" +
 		openWeatherMap.SECRET_KEY;
 	console.log(url);

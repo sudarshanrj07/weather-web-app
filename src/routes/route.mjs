@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
 
 router.get("/weather", (req, res) => {
 	if (!req.query.address) return res.send("Address is required");
-	weatherData(req.query.address, (err, result) => {
+	weatherData(req.query.address, "metric", (err, result) => {
 		if (err) return res.status(401).send(err);
 		res.send(result);
 	});

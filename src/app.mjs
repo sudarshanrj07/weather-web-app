@@ -8,7 +8,6 @@ import "dotenv/config";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
-app.use(routes);
 
 const publicPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../templates/views");
@@ -17,7 +16,9 @@ const partialsPath = path.join(__dirname, "../templates/partials");
 app.set("view engine", "hbs");
 app.set("views", viewsPath);
 hbs.registerPartials(partialsPath);
-app.set(express.static(publicPath));
+app.use(express.static(publicPath));
+
+app.use(routes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
