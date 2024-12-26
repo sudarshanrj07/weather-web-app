@@ -6,27 +6,30 @@ import "dotenv/config";
 const router = Router();
 
 router.get("/", async (req, res) => {
-	res.render("index", { title: "Weather Web App" });
+	res.render("index", {
+		title: "Weather Web App",
+	});
 });
 
 router.get("/weather", (req, res) => {
 	if (!req.query.address) return res.send("Address is required");
 	weatherData(req.query.address, "metric", (err, result) => {
 		if (err) return res.status(401).send(err);
-		
+
 		res.send(result);
 	});
 });
 
 router.get("/location", async (req, res) => {
 	try {
-		const response = await axios.get(
-			`https://ipinfo.io/json?token=${process.env.IP_API_KEY}`
-		);
-		const data = response.data;
-		if (data?.city) {
-			res.send(data);
-		}
+		// const response = await axios.get(
+		// 	`https://ipinfo.io/json?token=${process.env.IP_API_KEY}`
+		// );
+		// const data = response.data;
+		// if (data?.city) {
+		// 	res.send(data);
+		// }
+		res.send(req.ip);
 	} catch (error) {
 		console.error("Error fetching location data:", error);
 	}

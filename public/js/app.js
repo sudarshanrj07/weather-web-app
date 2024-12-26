@@ -62,7 +62,7 @@ weatherForm.addEventListener("submit", (e) => {
 
 function showData(city) {
 	getWeatherData(city, (result) => {
-		console.log(result);
+		// console.log(result);
 		if (result.cod === 200) {
 			const weatherId = result.weather[0].id;
 			if (weatherId >= 200 && weatherId < 300)

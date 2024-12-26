@@ -10,9 +10,17 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
-}
+	background-image: url("/public/img/img.jpeg"); /* Replace with your image URL */
 
-.main-content {
+	/* .background {
+	background-image: url("/public/img/img.jpeg"); /* Replace with your image URL */
+	background-size: cover; /* Ensures the image covers the entire area */
+	background-position: center; /* Centers the image */
+	background-repeat: no-repeat; /* Prevents the image from repeating */
+	height: 100vh; /* Full viewport height */
+	width: 100vw; /* Full viewport width */
+}
+*/ .main-content {
 	flex-grow: 1;
 }
 
@@ -100,9 +108,11 @@ h2 {
 	margin-top: 50px;
 }
 .temperature {
+	text-align: center;
 	font-size: 55px;
 	color: white;
 }
+
 .place {
 	text-align: center;
 	font-size: 35px;
@@ -110,7 +120,10 @@ h2 {
 	color: white;
 }
 .weatherCondition {
+	text-align: center;
 	color: white;
+	justify-content: center;
+	align-items: center;
 }
 .date {
 	text-align: center;
