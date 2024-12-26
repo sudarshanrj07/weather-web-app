@@ -20,20 +20,21 @@ router.get("/weather", (req, res) => {
 	});
 });
 
-router.get("/location", async (req, res) => {
-	try {
-		// const response = await axios.get(
-		// 	`https://ipinfo.io/json?token=${process.env.IP_API_KEY}`
-		// );
-		// const data = response.data;
-		// if (data?.city) {
-		// 	res.send(data);
-		// }
-		res.send(req.ip);
-	} catch (error) {
-		console.error("Error fetching location data:", error);
-	}
-});
+// router.get("/location", async (req, res) => {
+// 	try {
+// 		// const response = await axios.get(
+// 		// 	`https://ipinfo.io/json?token=${process.env.IP_API_KEY}`
+// 		// );
+// 		// const data = response.data;
+// 		// if (data?.city) {
+// 		// 	res.send(data);
+// 		// }
+// 		console.dir(req.connection.remoteAddress);
+// 		console.dir(req.socket.remoteAddress);
+// 	} catch (error) {
+// 		console.error("Error fetching location data:", error);
+// 	}
+// });
 router.get("*", (req, res) => {
 	res.render("404", { title: "Page not found" });
 });

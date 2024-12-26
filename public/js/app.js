@@ -1,4 +1,4 @@
-const locApi = "/location";
+// const locApi = "/location";
 const weatherApi = "/weather";
 
 const weatherForm = document.querySelector("form");
@@ -19,37 +19,36 @@ const options = { month: "long" };
 const monthName = currentDate.toLocaleString("en-US", options);
 dateElement.textContent = new Date().getDate() + ", " + monthName;
 
-fetch(locApi)
-	.then((response) => response.json())
-	.then((data) => {
-		if (data?.city) {
-			showData(data.city);
-		}
-	})
-	.catch((err) => {});
+// fetch(locApi)
+// 	.then((response) => response.json())
+// 	.then((data) => {
+// 		if (data?.city) {
+// 			showData(data.city);
+// 		}
+// 	})
+// 	.catch((err) => {});
 
-function getCityFromGeolocation() {
-	if ("geolocation" in navigator) {
-		locationElement.textContent = "Loading...";
-		navigator.geolocation.getCurrentPosition(
-			(position) => {
-				const lat = position.coords.latitude;
-				const lon = position.coords.longitude;
-				const locationApiUrl = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
-				fetch(locationApiUrl)
-					.then((response) => response.json())
-					.then((data) => {
-						if (data?.address?.city) {
-							const city = data.address.city;
-							showData(city);
-						}
-					})
-					.catch((err) => {});
-			},
-			(error) => {}
-		);
-	}
+if ("geolocation" in navigator) {
+	locationElement.textContent = "Loading...";
+	navigator.geolocation.getCurrentPosition(
+		(position) => {
+			const lat = position.coords.latitude;
+			const lon = position.coords.longitude;
+			const locationApiUrl = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
+			fetch(locationApiUrl)
+				.then((response) => response.json())
+				.then((data) => {
+					if (data?.address?.city) {
+						const city = data.address.city;
+						showData(city);
+					}
+				})
+				.catch((err) => {});
+		},
+		(error) => {}
+	);
 }
+
 weatherForm.addEventListener("submit", (e) => {
 	e.preventDefault();
 	locationElement.textContent = "Loading...";
